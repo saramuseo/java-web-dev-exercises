@@ -29,21 +29,57 @@ public class Student {
     }
 
 
-     //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+     //TODO: Uncomment and complete the getGradeLevel method here - // Determine the grade level of the student based on numberOfCredits:
+     public String getGradeLevel(int numberOfCredits) {
+        if(this.numberOfCredits <=29){
+            return "Freshman";
+        }
+         else if(this.numberOfCredits <=59){
+             return "Sophomore";
+         }
+         else if(this.numberOfCredits <=89){
+             return "Junior";
+         }
+         else{
+             return "Senior";
+         }
 
-    // TODO: Complete the addGrade method.
+    }
+
+    // TODO: Complete the addGrade method.         // Update the appropriate fields: numberOfCredits, gpa
     public void addGrade(int courseCredits, double grade) {
-        // Update the appropriate fields: numberOfCredits, gpa
+      double currentQualityScore =  this.gpa*this.numberOfCredits;
+      double totalQualityScore = currentQualityScore+grade*courseCredits;
+      this.numberOfCredits = this.numberOfCredits+courseCredits;
+      this.gpa = totalQualityScore/this.numberOfCredits;
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
+    public String toString() {
+        return this.name + " (Credits: " + this.numberOfCredits + ", GPA: " + this.gpa + ")";
+    }
 
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+
+    public boolean equals(Object studentToCheck) {
+
+        if (studentToCheck == this) {
+            return true;
+        }
+
+        if (studentToCheck == null) {
+            return false;
+        }
+
+        if (studentToCheck.getClass() != getClass()) {
+            return false;
+        }
+
+        Student theStudent = (Student) studentToCheck;
+        return theStudent.getStudentId() == getStudentId();
+    }
 
     public String getName() {
         return name;
