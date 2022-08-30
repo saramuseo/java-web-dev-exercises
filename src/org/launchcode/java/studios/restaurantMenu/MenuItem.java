@@ -17,6 +17,11 @@ public class MenuItem {
         this.category = category;
         this.isNew = isNew;
     }
+    private ArrayList<MenuItem> menuItems = new ArrayList<>();
+
+    public void addMenuItem (MenuItem itemOnMenu){
+        this.menuItems.add(itemOnMenu);
+    }
 
 
 
